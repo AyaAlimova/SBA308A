@@ -27,7 +27,7 @@ function selectCategories(products) {
   });
 }
 
-function populateProducts(products) {
+function selectProducts(products) {
   productSelect.innerHTML = '<option value="">Select a product</option>';
   products.forEach(product => {
     const option = document.createElement('option');
