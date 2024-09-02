@@ -1,5 +1,6 @@
 const categorySelect = document.getElementById('category');
 const productSelect = document.getElementById('product');
+const tableRows = document.getElementById('tableRows');
 
 let allProducts = [];
 
@@ -59,10 +60,10 @@ function displaySelectedProduct(productId) {
           <td>${selectedProduct.stock}</td>
           <td>${selectedProduct.brand}</td>
           <td><img src = "${selectedProduct.thumbnail}" style ="width: 20%"/></td></tr>`;
-         document.getElementById('tableRows').innerHTML = rows;
+          tableRows.innerHTML = rows;
   }
   else {
-    document.getElementById('tableRows').innerHTML = `<tr><td colspan="10">No product found</td></tr>`;
+      tableRows.innerHTML = `<tr><td colspan="10">No product found</td></tr>`;
   }
 
 }
@@ -91,6 +92,42 @@ async function createProduct(newProduct) {
   }
   catch(error){
     console.error('Error creating product: ', error)
+  }
+}
+//Using PUT method
+
+async function updateProduct(productID, updateProduct) {
+  try{
+    const response = await fetch("https://dummyjson.com/products/add", {
+      method: 'PUT',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(updateProduct)
+    });
+    const updateProductData = await response.json();
+    const index = allProducts.findIndex(product => product.id == productID);
+    allProducts[index] = updateProductData;
+    selectProducts(allProducts);
+    displaySelectedProduct(productID);
+  }
+  catch(error){
+    console.error('Error updating product', error)
+  }
+}
+
+// Deleting data
+async function deleteProduct(productID) {
+  try{
+    await fetch('https://dummyjson.com/products/${productID}',{
+      method: 'DELETE'
+    });
+    allProducts = allProducts.filter(product => product.id != productID)
+    createProduct(allProducts);
+    tableRows.innerHTML =`<tr><td colspan = "10"> Product delete</td></tr>`
+  }
+  catch(error){
+    console.log('Error deleting product:', error)
   }
 }
 
