@@ -1,6 +1,6 @@
 import {
-  categorySelect, productSelect, fetchCategoriesAndProducts,
-  selectCategories, selectProducts, displaySelectedProduct,
+  categorySelect, productSelect, fetchCategoriesAndProducts, allProducts,
+  selectProducts, displaySelectedProduct,
   createProduct, updateProduct, deleteProduct 
 } from './index.js'
 
@@ -16,6 +16,7 @@ productSelect.addEventListener('change', (event) => {
   displaySelectedProduct(selectedProductId)
 });
 
+
 document.getElementById('createBtn').addEventListener('click', () =>{
   const newProduct = {
    id: '155',
@@ -28,12 +29,12 @@ document.getElementById('createBtn').addEventListener('click', () =>{
    stock: 'out of stock',
    thumbnail: 'http://'
   };
-  data.createProduct(newProduct)
+  createProduct(newProduct)
 })
 
 document.getElementById('updateBtn').addEventListener('click',() => {
   const productId = productSelect.value;
-  const updateProduct ={
+  const updateProducts ={
     id: '155',
     title: 'Iphone16',
     description: 'This is a new iphone',
@@ -44,12 +45,12 @@ document.getElementById('updateBtn').addEventListener('click',() => {
     stock: 'out of stock',
     thumbnail: 'http://'
   };
-  updateProduct(productId, updateProduct)
+  updateProduct(productId, updateProducts)
 });
 
 document.getElementById('deleteBtn').addEventListener('click', () => {
   const productID = productSelect.value;
   deleteProduct(productID)
 });
-
 fetchCategoriesAndProducts();
+

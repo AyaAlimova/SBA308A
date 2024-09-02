@@ -2,13 +2,13 @@ export const categorySelect = document.getElementById('category');
 export const productSelect = document.getElementById('product');
 export const tableRows = document.getElementById('tableRows');
 
-let allProducts = [];
+export let allProducts = [];
 
 export async function fetchCategoriesAndProducts() {
   try {
     const response = await fetch('https://dummyjson.com/products');
     const data = await response.json();
-
+    console.log(data)
     allProducts = data.products;
     selectCategories(allProducts);
     selectProducts(allProducts);  // Initially populate products
