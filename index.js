@@ -16,7 +16,7 @@ async function fetchCategoriesAndProducts() {
   }
 }
 
-//Select category
+//Select category 
 function selectCategories(products) {
   const categories = [...new Set(products.map(product => product.category))];
   categories.forEach(category => {
