@@ -9,8 +9,8 @@ async function fetchCategoriesAndProducts() {
     const data = await response.json();
 
     allProducts = data.products;
-    populateCategories(allProducts);
-    populateProducts(allProducts);  // Initially populate products
+    selectCategories(allProducts);
+    selectProducts(allProducts);  // Initially populate products
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -39,7 +39,7 @@ function selectProducts(products) {
 function updateProducts() {
   const selectedCategory = categorySelect.value;
   const filteredProducts = allProducts.filter(product => product.category === selectedCategory);
-  populateProducts(filteredProducts);
+  selectProducts(filteredProducts);
 }
 
 
@@ -74,6 +74,26 @@ productSelect.addEventListener('change', (event) => {
 });
 
 fetchCategoriesAndProducts();
+
+//Using POST method
+async function createProduct(newProduct) {
+  try{
+    const response = await fetch("https://dummyjson.com/products/add", {
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(newProduct)
+    });
+    const createProduct = await response.json();
+    allProducts.push(createProduct);
+    selectProducts(allProducts)
+  }
+  catch(error){
+    console.error('Error creating product: ', error)
+  }
+}
+
 
 
 
