@@ -7,19 +7,19 @@
  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Select a Category</h2>
-  <select name="category" id="category"
+  <h2>Select Category</h2>
+  <select name="category" id="category" class="select"
     style="width: 300px" 
     class="form-select form-select-lg my-1 mx-auto"
     aria-label="form-select-lg">
   </select>
-  <h2>Select a Product</h2>
-  <select name="product" id="product"
+  <h2>Select  Product</h2>
+  <select name="product" id="product" class="select"
     style="width: 300px"
     class="form-select form-select-lg my-1 mx-auto"
     aria-label="form-select-lg">
   </select>
-  <h1>Product details</h1>
+  <h2>Product details</h2>
   <table id="productTable">
    <thead>
     <tr>
@@ -38,9 +38,8 @@
   </thead>
     <tbody id="tableRows"></tbody>
   </table>
-  <button id="createBtn" type="submit">Add Product</button>
-  <button id="updateBtn">Update Product</button>
-  <button id="deleteBtn">Delete Product</button>
+  <button id="createBtn" class="button button1" type="submit">Add Product</button>
+  <button id="updateBtn" class="button button2">Update Product</button>
 
 
   <script type="module" src="main.js"></script>
