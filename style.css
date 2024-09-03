@@ -1,11 +1,12 @@
 body{
   text-align: center;
+  background-color: rgb(253, 243, 251);
 }
 table{
   margin-bottom:30px;
 }
 #productTable{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -30,6 +31,7 @@ padding-top: 12px;
     background-color: #dbfcf1;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .button{
   background-color: #e929df; 
